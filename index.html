@@ -1,0 +1,834 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My Personal Website</title>
+
+<style>
+/* =========================
+   全局样式
+========================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: "Segoe UI", "Microsoft YaHei", sans-serif;
+    background: #ffffff;
+    color: #263b32;
+    line-height: 1.8;
+}
+
+/* =========================
+   左侧侧边栏
+========================= */
+
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 75px;
+    height: 100vh;
+    background: #dce8df;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 38px;
+    z-index: 100;
+}
+
+.sidebar a {
+    writing-mode: vertical-rl;
+    text-decoration: none;
+    color: #547264;
+    font-size: 13px;
+    letter-spacing: 3px;
+    transition: color 0.2s;
+}
+
+.sidebar a:hover {
+    color: #174b36;
+}
+
+/* =========================
+   主体内容
+========================= */
+
+main {
+    margin-left: 75px;
+    padding: 0 9%;
+}
+
+section {
+    max-width: 1100px;
+    margin: auto;
+    padding: 110px 0;
+}
+
+.section-title {
+    font-size: 30px;
+    color: #245640;
+    margin-bottom: 55px;
+    font-weight: 600;
+    letter-spacing: 2px;
+}
+
+.section-subtitle {
+    font-size: 13px;
+    color: #94a99c;
+    letter-spacing: 3px;
+    margin-bottom: 8px;
+}
+
+/* =========================
+   第一部分：个人介绍
+========================= */
+
+.hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    gap: 65px;
+}
+
+.profile-photo {
+    width: 310px;
+    height: 390px;
+    flex-shrink: 0;
+    background: #edf2ee;
+    border-radius: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #9aafa1;
+    font-size: 14px;
+    letter-spacing: 2px;
+    overflow: hidden;
+}
+
+.profile-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.intro {
+    flex: 1;
+}
+
+.intro .hello {
+    font-size: 15px;
+    color: #8da99a;
+    letter-spacing: 3px;
+    margin-bottom: 15px;
+}
+
+.intro h1 {
+    font-size: 43px;
+    color: #245640;
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+
+.intro p {
+    font-size: 15px;
+    color: #75877c;
+    max-width: 470px;
+    line-height: 2.2;
+}
+
+.intro-line {
+    width: 55px;
+    height: 3px;
+    background: #6c987d;
+    margin: 25px 0;
+}
+
+/* =========================
+   第二部分：兴趣爱好
+========================= */
+
+.hobbies {
+    border-top: 1px solid #edf1ed;
+}
+
+.hobby {
+    display: flex;
+    align-items: center;
+    gap: 55px;
+    margin-bottom: 100px;
+}
+
+.hobby.reverse {
+    flex-direction: row-reverse;
+}
+
+.hobby-image {
+    width: 185px;
+    height: 185px;
+    flex-shrink: 0;
+    border-radius: 50%;
+    background: #e5eee7;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 65px;
+    border: 9px solid #f5f8f5;
+    box-shadow: 0 0 0 1px #dce8df;
+}
+
+.hobby-text {
+    max-width: 470px;
+}
+
+.hobby-text h3 {
+    color: #315f48;
+    font-size: 23px;
+    margin-bottom: 12px;
+    font-weight: 600;
+}
+
+.hobby-text p {
+    font-size: 15px;
+    color: #788a7e;
+    line-height: 2.1;
+}
+
+/* =========================
+   第三部分：学习情况
+========================= */
+
+.study {
+    border-top: 1px solid #edf1ed;
+}
+
+.study-intro {
+    color: #788a7e;
+    font-size: 15px;
+    margin-bottom: 35px;
+    line-height: 2.1;
+}
+
+.subject-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 18px;
+}
+
+.subject {
+    padding: 25px;
+    background: #f5f8f5;
+    border-radius: 12px;
+    border-left: 4px solid #71967e;
+}
+
+.subject h3 {
+    color: #315f48;
+    font-size: 18px;
+    margin-bottom: 5px;
+}
+
+.subject p {
+    font-size: 13px;
+    color: #91a296;
+}
+
+.ai-progress {
+    margin-top: 40px;
+    padding: 30px;
+    background: #edf4ef;
+    border-radius: 14px;
+}
+
+.ai-progress h3 {
+    color: #315f48;
+    margin-bottom: 12px;
+}
+
+.ai-progress p {
+    font-size: 14px;
+    color: #788a7e;
+    margin-bottom: 18px;
+}
+
+.progress-track {
+    height: 8px;
+    background: #d5e3d8;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.progress-fill {
+    height: 100%;
+    width: 70%;
+    background: #668d73;
+    border-radius: 10px;
+}
+
+/* =========================
+   第四部分：梦想
+========================= */
+
+.dream {
+    border-top: 1px solid #edf1ed;
+}
+
+.dream-box {
+    padding: 55px 45px;
+    background: #edf4ef;
+    border-radius: 16px;
+    text-align: center;
+}
+
+.dream-box h3 {
+    font-size: 25px;
+    color: #315f48;
+    margin-bottom: 22px;
+}
+
+.dream-box p {
+    max-width: 650px;
+    margin: auto;
+    color: #718579;
+    font-size: 15px;
+    line-height: 2.3;
+}
+
+/* =========================
+   第五部分：作品集
+========================= */
+
+.portfolio {
+    border-top: 1px solid #edf1ed;
+}
+
+.work-card {
+    background: #f5f8f5;
+    border-radius: 15px;
+    overflow: hidden;
+    margin-bottom: 35px;
+}
+
+.work-info {
+    padding: 25px 30px;
+}
+
+.work-info h3 {
+    font-size: 21px;
+    color: #315f48;
+    margin-bottom: 8px;
+}
+
+.work-info p {
+    font-size: 14px;
+    color: #829388;
+}
+
+.game-frame {
+    width: 100%;
+    height: 650px;
+    border: none;
+    display: block;
+    background: #101221;
+}
+
+.novel-card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    padding: 30px;
+    background: #edf4ef;
+    border-radius: 15px;
+}
+
+.novel-card h3 {
+    color: #315f48;
+    font-size: 20px;
+    margin-bottom: 8px;
+}
+
+.novel-card p {
+    font-size: 14px;
+    color: #829388;
+}
+
+.novel-link {
+    display: inline-block;
+    padding: 11px 24px;
+    border-radius: 8px;
+    background: #456f56;
+    color: white;
+    text-decoration: none;
+    font-size: 13px;
+    white-space: nowrap;
+    transition: background 0.2s;
+}
+
+.novel-link:hover {
+    background: #254c36;
+}
+
+/* =========================
+   页脚
+========================= */
+
+footer {
+    margin-left: 75px;
+    padding: 35px 20px;
+    text-align: center;
+    background: #e7efe9;
+}
+
+footer p {
+    color: #456b54;
+    font-size: 15px;
+    letter-spacing: 2px;
+}
+
+footer small {
+    display: block;
+    margin-top: 10px;
+    color: #9aafa1;
+    font-size: 11px;
+}
+
+/* =========================
+   Back To Top
+========================= */
+
+.back-to-top {
+    position: fixed;
+    right: 30px;
+    bottom: 30px;
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    background: #547c62;
+    color: white;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+    transition: background 0.2s;
+    z-index: 99;
+}
+
+.back-to-top:hover {
+    background: #294f38;
+}
+
+/* =========================
+   手机端适配
+========================= */
+
+@media (max-width: 750px) {
+
+    .sidebar {
+        width: 100%;
+        height: 55px;
+        top: 0;
+        left: 0;
+        flex-direction: row;
+        gap: 25px;
+    }
+
+    .sidebar a {
+        writing-mode: horizontal-tb;
+        font-size: 11px;
+        letter-spacing: 1px;
+    }
+
+    main {
+        margin-left: 0;
+        padding: 0 7%;
+        padding-top: 55px;
+    }
+
+    section {
+        padding: 75px 0;
+    }
+
+    .hero {
+        flex-direction: column;
+        justify-content: center;
+        gap: 30px;
+        text-align: center;
+    }
+
+    .profile-photo {
+        width: 220px;
+        height: 260px;
+    }
+
+    .intro h1 {
+        font-size: 32px;
+    }
+
+    .intro-line {
+        margin: 20px auto;
+    }
+
+    .hobby,
+    .hobby.reverse {
+        flex-direction: column;
+        text-align: center;
+        gap: 25px;
+        margin-bottom: 70px;
+    }
+
+    .hobby-image {
+        width: 150px;
+        height: 150px;
+        font-size: 50px;
+    }
+
+    .subject-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .dream-box {
+        padding: 35px 22px;
+    }
+
+    .novel-card {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .game-frame {
+        height: 480px;
+    }
+
+    footer {
+        margin-left: 0;
+    }
+
+    .back-to-top {
+        right: 15px;
+        bottom: 15px;
+    }
+}
+</style>
+</head>
+
+<body id="top">
+
+<!-- 左侧导航栏 -->
+
+<nav class="sidebar">
+    <a href="#home">首页</a>
+    <a href="#hobbies">兴趣爱好</a>
+    <a href="#study">学习情况</a>
+    <a href="#dream">我的梦想</a>
+    <a href="#portfolio">作品集</a>
+</nav>
+
+<main>
+
+<!-- =========================
+     第一部分：个人介绍
+========================= -->
+
+<section class="hero" id="home">
+
+    <div class="profile-photo">
+        <!-- 可以将这里替换成自己的照片 -->
+        <!-- 例如：<img src="my-photo.jpg" alt="我的照片"> -->
+        MY PHOTO
+    </div>
+
+    <div class="intro">
+
+        <div class="hello">HELLO, WELCOME TO MY WORLD</div>
+
+        <h1>你好，很高兴认识你。</h1>
+
+        <div class="intro-line"></div>
+
+        <p>
+            你好！我是一名高中生，一个喜欢探索新事物、
+            充满好奇心的人。我喜欢写作、阅读，
+            也对人工智能与编程有着浓厚的兴趣。
+            我正在不断学习新的知识，
+            希望用自己的想法创造出更多有趣的作品。
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     第二部分：兴趣爱好
+========================= -->
+
+<section class="hobbies" id="hobbies">
+
+    <div class="section-subtitle">MY INTERESTS</div>
+    <h2 class="section-title">兴趣爱好</h2>
+
+
+    <!-- 爱好一：写书 -->
+
+    <div class="hobby">
+
+        <div class="hobby-image">
+            ✍️
+        </div>
+
+        <div class="hobby-text">
+
+            <h3>01 · 写书</h3>
+
+            <p>
+                我喜欢通过文字创造属于自己的世界，
+                将脑海中的想法、故事与人物变成真实的作品。
+                对我来说，写作是一种表达想象力的方式，
+                也是一段不断探索与创造的旅程。
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <!-- 爱好二：AI编程 -->
+
+    <div class="hobby reverse">
+
+        <div class="hobby-image">
+            💻
+        </div>
+
+        <div class="hobby-text">
+
+            <h3>02 · AI 编程</h3>
+
+            <p>
+                我对人工智能和编程有着浓厚的兴趣，
+                喜欢利用 AI 探索新的技术与创造方式。
+                我希望能够将自己的创意变成真正可以运行的程序，
+                制作出有趣且实用的作品。
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <!-- 爱好三：看书 -->
+
+    <div class="hobby">
+
+        <div class="hobby-image">
+            📚
+        </div>
+
+        <div class="hobby-text">
+
+            <h3>03 · 阅读</h3>
+
+            <p>
+                阅读让我能够接触不同的思想与世界，
+                也让我从各种故事和知识中获得新的灵感。
+                我喜欢沉浸在书籍的世界里，
+                享受独处与思考带来的乐趣。
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     第三部分：学习情况
+========================= -->
+
+<section class="study" id="study">
+
+    <div class="section-subtitle">MY STUDIES</div>
+    <h2 class="section-title">学习情况</h2>
+
+    <p class="study-intro">
+        我比较擅长理科，同时也对语言和计算机领域有着不错的学习表现。
+        我喜欢通过学习新知识拓展自己的能力。
+        目前，我正在学习 AI 编程，并且取得了不错的进展。
+    </p>
+
+    <div class="subject-grid">
+
+        <div class="subject">
+            <h3>数学</h3>
+            <p>成绩优异 · 擅长逻辑思考</p>
+        </div>
+
+        <div class="subject">
+            <h3>物理</h3>
+            <p>成绩优异 · 喜欢科学探索</p>
+        </div>
+
+        <div class="subject">
+            <h3>中文</h3>
+            <p>成绩优异 · 擅长语言表达</p>
+        </div>
+
+        <div class="subject">
+            <h3>电脑课</h3>
+            <p>成绩优异 · 对计算机充满兴趣</p>
+        </div>
+
+    </div>
+
+    <div class="ai-progress">
+
+        <h3>正在学习 · AI Programming</h3>
+
+        <p>
+            目前正在学习人工智能与编程相关知识，
+            学习进度良好，持续探索更多可能性。
+        </p>
+
+        <div class="progress-track">
+            <div class="progress-fill"></div>
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     第四部分：梦想
+========================= -->
+
+<section class="dream" id="dream">
+
+    <div class="section-subtitle">MY DREAM</div>
+    <h2 class="section-title">我的梦想</h2>
+
+    <div class="dream-box">
+
+        <h3>自由地生活，自由地创造。</h3>
+
+        <p>
+            我希望未来能够成为一名自由职业者，
+            拥有自己的工作节奏，在家中自由地工作。
+            我不希望生活被繁忙的日程完全占据，
+            而是希望拥有足够的自由与时间，
+            去探索世界、体验生活、享受沿途的风景。
+            <br><br>
+            对我而言，理想的生活不仅是实现自己的价值，
+            也是能够快乐地享受这个世界。
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     第五部分：作品集
+========================= -->
+
+<section class="portfolio" id="portfolio">
+
+    <div class="section-subtitle">MY CREATIONS</div>
+    <h2 class="section-title">我的作品集</h2>
+
+
+    <!-- 小游戏 -->
+
+    <div class="work-card">
+
+        <div class="work-info">
+
+            <h3>01 · 熔岩之上 · 像素平台冒险</h3>
+
+            <p>
+                这是我独立制作的 HTML 小游戏，
+                一款包含平台跳跃、敌人与装备系统的像素冒险游戏。
+            </p>
+
+        </div>
+
+        <!-- 将上传的小游戏文件命名为 game.html，
+             并放在本网站 HTML 文件的同一个文件夹中 -->
+
+        <iframe
+            class="game-frame"
+            src="game.html"
+            title="我的小游戏">
+        </iframe>
+
+    </div>
+
+
+    <!-- 小说作品 -->
+
+    <div class="novel-card">
+
+        <div>
+
+            <h3>02 · 我的小说</h3>
+
+            <p>
+                这是我创作的小说作品，
+                欢迎进入阅读我的文字世界。
+            </p>
+
+        </div>
+
+        <a
+            class="novel-link"
+            href="https://www.gongzicp.com/read-8389933.html"
+            target="_blank"
+            rel="noopener noreferrer">
+
+            阅读小说 →
+
+        </a>
+
+    </div>
+
+</section>
+
+</main>
+
+
+<!-- =========================
+     页脚
+========================= -->
+
+<footer>
+
+    <p>船到桥头自然直，车到山前必有路。</p>
+
+    <small>
+        © 2026 MY PERSONAL WEBSITE · MADE WITH CARE
+    </small>
+
+</footer>
+
+
+<!-- =========================
+     返回顶部按钮
+========================= -->
+
+<a href="#top" class="back-to-top" title="Back to Top">
+    ↑
+</a>
+
+
+</body>
+</html>
